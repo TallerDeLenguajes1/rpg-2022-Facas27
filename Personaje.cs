@@ -2,6 +2,7 @@ using System;
 namespace Juego
 {
     public class Personaje{
+        Random p = new Random();
         private CA Carac;
         private Datos Datos;
 
@@ -54,11 +55,21 @@ namespace Juego
             this.Datos.Salud1 = this.Datos.Salud1 - DañoProvocado;
         }
         public void ActualizarStats(){
-            this.Carac.Velocidad1 += 10;
-            this.Carac.Destreza1 +=7;
-            this.Carac.Fuerza1 += 5;
-            this.Carac.Nivel1++;
-            this.Carac.Armadura1 += 8;
+            this.Carac.Velocidad1 += p.Next(1,10);
+            this.Carac.Destreza1 +=p.Next(1,5);
+            this.Carac.Fuerza1 += p.Next(1,10);
+            this.Carac.Nivel1 += p.Next(1,10);
+            this.Carac.Armadura1 += p.Next(1,10);
+            if (1200> this.Datos.Salud1)
+            {
+               Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+               Console.WriteLine("La salud del campeon {0} estaba por debajo del 40% Base, procedemos a curarlo un 30% de su salud actual ",this.Datos.Apodo1);
+               Console.WriteLine("Heeling {0}" , Convert.ToInt32(this.Datos.Salud1 * 1.4));
+               this.Datos.Salud1 += Convert.ToInt32(this.Datos.Salud1 * 1.4);
+               Console.WriteLine("Salud Actual : {0}" , this.Datos.Salud1);
+               Console.WriteLine("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡");
+            }
+            
         }
         public void MostrarDatos(){
             Console.WriteLine("Los datos son:");

@@ -36,16 +36,13 @@ namespace Juego
             Random p  = new Random();
            string[] tipos = new string[]{"Elfo","Ogro","Humano","Hechizero","Gigante"};
            string[] nombre = new string[]{"Buster", "Jack", "Kaisa","Phantom", "Artemis", "Dasai", "Kansai"};
-           string[] apodos = new string[]{"Facas27","Arequima","Logi","Dias","Zwei","Yorch","BusterBlader"};
+           string[] apodos = new string[]{"Facas27","Arequima","Logi","Dias","Zwei","Yorch","BusterBlader","Yuichi","FacetoFace","ToEasy", "Ishigami" , "Aracbela" , "Disaster" , "DeathMachine", "Kiyotaka" , "S1mple", "Gintoki" , "Kun Lao" , "Kumoko","Akane", "Dishi" , "Kazuma" , "Aqua", "27"};
            this.Tipo = tipos[p.Next(0,5)];
            this.Nombre = nombre[p.Next(0,7)];
-           this.Apodo = apodos[p.Next(0,7)];
+           this.Apodo = apodos[p.Next(0,23)];
            this.Edad =p.Next(0,301);
            this.Salud = 3000;
-           int dia = p.Next(1,32);
-           int mes = p.Next(1,13);
-           int year = p.Next(1962,2068);
-           DateTime f = new DateTime(year,mes,dia);
+           DateTime f = new DateTime(p.Next(1968,2056),p.Next(1,12),p.Next(1,30));
            this.FechaNac = f;
           
         }

@@ -3,7 +3,7 @@ namespace Juego{
 
     class Peleas{
 
-        public void Pelear(Personaje Atacante , Personaje Defensor){
+        public Personaje Pelear(Personaje Atacante , Personaje Defensor){
             Random p = new Random();
             int band = 0;
             Console.WriteLine("Tiraremos una moneda para ver quien empeiza, elege 1=Cara /2 = Cruz");
@@ -79,6 +79,9 @@ namespace Juego{
                 Console.WriteLine("El ganador es {0} ",ApodoAtaca);
                 Console.WriteLine("Procedemos a actualizar su Status");
                 Atacante.ActualizarStats();
+                Console.WriteLine("//////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+                
+                return Atacante;
             }else
             {
                 if (band == 2)
@@ -86,6 +89,7 @@ namespace Juego{
                     Console.WriteLine("El ganador es {0} ",ApodoDef);
                     Console.WriteLine("Procedemos a actualizar su Status");
                     Defensor.ActualizarStats();
+                    return Defensor;
                     
                 }else
                 {
@@ -94,11 +98,13 @@ namespace Juego{
                         Console.WriteLine("El ganador es {0} ",ApodoAtaca);
                         Console.WriteLine("Procedemos a actualizar su Status");
                         Atacante.ActualizarStats();
+                        return Atacante;
                     }else
                     {
                         Console.WriteLine("El ganador es {0} ",ApodoDef);
                         Console.WriteLine("Procedemos a actualizar su Status");
                         Defensor.ActualizarStats();
+                        return Defensor;
                     }
                 }
                 
