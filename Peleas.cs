@@ -6,7 +6,7 @@ namespace Juego{
         public Personaje Pelear(Personaje Atacante , Personaje Defensor){
             Random p = new Random();
             int band = 0;
-            Console.WriteLine("Tiraremos una moneda para ver quien empeiza, elege 1=Cara /2 = Cruz");
+            Console.WriteLine("Tiraremos una moneda para ver quien empieza, elige 1=Cara /2 = Cruz");
             int flip = p.Next(1,3);
             int opc = Convert.ToInt32(Console.ReadLine());
             if (flip == opc )

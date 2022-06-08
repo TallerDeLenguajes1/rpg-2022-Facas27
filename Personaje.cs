@@ -60,6 +60,7 @@ namespace Juego
             this.Carac.Fuerza1 += p.Next(1,10);
             this.Carac.Nivel1 += p.Next(1,10);
             this.Carac.Armadura1 += p.Next(1,10);
+            this.Datos.Partidasg1++;
             if (1200> this.Datos.Salud1)
             {
                Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -77,6 +78,7 @@ namespace Juego
             Console.WriteLine("Nombre: {0}", this.Datos.Nombre1);
             Console.WriteLine("Apodo: {0}", this.Datos.Apodo1);
             Console.WriteLine("Salud: {0}", this.Datos.Salud1);
+            Console.WriteLine("Partidas Ganadas: {0}", this.Datos.Partidasg1);
             Console.WriteLine("");
          
 
@@ -95,6 +97,11 @@ namespace Juego
                 return true;
             }
             return false;
+        }
+        public void UploadScore(int cant){
+            string path = @"C:\Users\facun\OneDrive\Escritorio\RPG\rpg-2022-Facas27";
+            string linea = this.Datos.Tipo1+";"+this.Datos.Nombre1 + ";" + this.Datos.Apodo1 + "; " + this.Datos.Partidasg1+"/"+cant+"\n";  
+            File.AppendAllText(path + @"\score.csv",linea);
         }
     }
     

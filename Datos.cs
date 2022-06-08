@@ -9,6 +9,7 @@ namespace Juego
 
         private int Edad;
         private int Salud;
+        private int Partidasg = 0;
 
         public Datos()
         {
@@ -23,6 +24,7 @@ namespace Juego
             this.Edad = edad;
             this.Salud = salud;
             
+            
         }
 
         public string Tipo1 { get => Tipo; set => Tipo = value; }
@@ -31,6 +33,7 @@ namespace Juego
         public DateTime FechaNac1 { get => FechaNac; set => FechaNac = value; }
         public int Edad1 { get => Edad; set => Edad = value; }
         public int Salud1 { get => Salud; set => Salud = value; }
+        public int Partidasg1 { get => Partidasg; set => Partidasg = value; }
 
         public void LlenarDatos(){
             Random p  = new Random();

@@ -33,6 +33,15 @@ namespace Juego{
             Console.WriteLine("Sus stats finales son: ");
             Winner.MostrarDatos();
             Winner.MostrarCarac();
+            Console.WriteLine("Subiendo SCORE del ganador");
+            Winner.UploadScore(cant);
+            Console.WriteLine("Desea ver el Score de los campeones ganadores?(1= SI , 2=NO)");
+            int opc12 = Convert.ToInt32(Console.ReadLine());
+            if (opc12 == 1)
+            {
+                MostrarScore();
+            }
+
 
             
 
@@ -40,5 +49,22 @@ namespace Juego{
 
             
         }
+        public static void MostrarScore(){
+             string path = @"C:\Users\facun\OneDrive\Escritorio\RPG\rpg-2022-Facas27\score.csv";
+            if (File.Exists(path))
+            {
+                string[]leer = File.ReadAllLines(path);
+                foreach (string item in leer)
+                {
+                    Console.WriteLine(item);
+                }
+                
+            }else
+            {
+                Console.Write("El archivo que desea abrir no existe o no se pudo abrir");
+            }
+        }
+        
     }
+    
 }
