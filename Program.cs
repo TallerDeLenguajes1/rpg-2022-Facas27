@@ -1,7 +1,6 @@
-﻿using System;
-using System.Text.Json;
-using System.Text;
-namespace Juego{
+﻿using System.Text.Json;
+namespace Juego
+{
     class Program
     {
         static void Main(string[] args){

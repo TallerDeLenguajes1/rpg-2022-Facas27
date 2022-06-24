@@ -1,3 +1,4 @@
+using System.Net;
 namespace Juego
 {
     public class Datos
@@ -37,10 +38,9 @@ namespace Juego
 
         public void LlenarDatos(){
             Random p  = new Random();
-           string[] tipos = new string[]{"Elfo","Ogro","Humano","Hechizero","Gigante"};
            string[] nombre = new string[]{"Buster", "Jack", "Kaisa","Phantom", "Artemis", "Dasai", "Kansai"};
            string[] apodos = new string[]{"Facas27","Arequima","Logi","Dias","Zwei","Yorch","BusterBlader","Yuichi","FacetoFace","ToEasy", "Ishigami" , "Aracbela" , "Disaster" , "DeathMachine", "Kiyotaka" , "S1mple", "Gintoki" , "Kun Lao" , "Kumoko","Akane", "Dishi" , "Kazuma" , "Aqua", "27"};
-           this.Tipo = tipos[p.Next(0,5)];
+           this.Tipo = Razas();
            this.Nombre = nombre[p.Next(0,7)];
            this.Apodo = apodos[p.Next(0,23)];
            this.Edad =p.Next(0,301);
@@ -49,5 +49,48 @@ namespace Juego
            this.FechaNac = f;
           
         }
+        static public string Razas(){
+            Random p = new Random();
+            string url = $"https://www.dnd5eapi.co/api/races";    
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (Stream strReader = response.GetResponseStream())
+                    {
+                        if (strReader == null);
+                        using (StreamReader objReader = new StreamReader(strReader))
+                        {
+                            string responseBody = objReader.ReadToEnd();
+                            var ListC = System.Text.Json.JsonSerializer.Deserialize<RaizRazas>(responseBody);
+                            List<string>ListaRazas = new List<string>();
+                            
+                            foreach (ResultadosRaza i in ListC.Results)
+                            {
+                                ListaRazas.Add(i.Name);
+                                
+                                
+                            }
+                            string name  = ListaRazas[p.Next(0,8)];  
+                            return name;
+
+                        }
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("Problemas de acceso a la API");
+            }
+            string l = "";
+            return l;
+
+
+        }
     }
+    
 }
